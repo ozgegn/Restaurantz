@@ -139,7 +139,8 @@ fun BackgroundContent(
             .background(backgroundColor)
     ) {
         Image(
-            painter = painter, contentDescription = "Restaurant Image",
+            painter = painter,
+            contentDescription = "Restaurant Image",
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(imageFraction + MINIMUM_BACKGROUND_IMAGE)

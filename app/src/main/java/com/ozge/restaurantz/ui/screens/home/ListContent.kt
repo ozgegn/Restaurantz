@@ -58,6 +58,9 @@ fun ListContent(
         }
 
         when {
+            loadState.refresh is LoadState.Loading -> {
+                //Empty
+            }
             error != null -> {
                 EmptyScreen {
                     restaurants.refresh()
@@ -66,15 +69,19 @@ fun ListContent(
             restaurants.itemCount < 1 -> {
                 EmptyScreen()
             }
-        }
-    }
-
-    LazyColumn {
-        items(
-            items = restaurants
-        ) { restaurant ->
-            restaurant?.let {
-                ListItem(restaurantUIModel = restaurant, navHostController = navHostController)
+            else -> {
+                LazyColumn {
+                    items(
+                        items = restaurants
+                    ) { restaurant ->
+                        restaurant?.let {
+                            ListItem(
+                                restaurantUIModel = restaurant,
+                                navHostController = navHostController
+                            )
+                        }
+                    }
+                }
             }
         }
     }
