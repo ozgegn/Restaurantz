@@ -1,5 +1,6 @@
 package com.ozge.restaurantz.di
 
+import com.ozge.restaurantz.data.local.RestaurantDao
 import com.ozge.restaurantz.data.mapper.RestaurantUIMapper
 import com.ozge.restaurantz.data.remote.RestaurantApi
 import com.ozge.restaurantz.data.repository.RestaurantRepositoryImpl
@@ -19,7 +20,12 @@ object RepositoryModule {
     @Provides
     fun provideRestaurantRepository(
         api: RestaurantApi,
-        mapper: RestaurantUIMapper
-    ): RestaurantRepository = RestaurantRepositoryImpl(api, mapper)
+        mapper: RestaurantUIMapper,
+        dao: RestaurantDao
+    ): RestaurantRepository = RestaurantRepositoryImpl(
+        api = api,
+        mapper = mapper,
+        restaurantDao = dao
+    )
 
 }

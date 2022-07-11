@@ -14,5 +14,6 @@ data class RestaurantEntity(
     val review: String?,
     val logo: String?,
     val phone_number: String?,
-    val address: String?
-): ResponseModel
+    val address: String?,
+    var page: Int? = 1
+) : ResponseModel

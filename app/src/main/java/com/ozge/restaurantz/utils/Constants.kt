@@ -8,7 +8,7 @@ object ApiConstants {
     const val MEDIA_TYPE = "application/json"
     const val CLIENT_TIMEOUT = 15L
     const val CONNECT_TIMEOUT = 5L
-
+    const val DEFAULT_PAGE_SIZE = 8
 }
 
 object NavConstants {

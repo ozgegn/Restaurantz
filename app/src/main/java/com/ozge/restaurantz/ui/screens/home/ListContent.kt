@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
@@ -31,10 +30,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.items
 import coil.compose.rememberAsyncImagePainter
 import com.ozge.restaurantz.R
 import com.ozge.restaurantz.domain.model.RestaurantUIModel
 import com.ozge.restaurantz.navigation.Screen
+import com.ozge.restaurantz.ui.components.EmptyScreen
 import com.ozge.restaurantz.ui.theme.titleTextColor
 import com.ozge.restaurantz.utils.LARGE_PADDING
 import com.ozge.restaurantz.utils.MEDIUM_PADDING
@@ -42,12 +45,37 @@ import com.ozge.restaurantz.utils.RESTAURANT_ITEM_HEIGHT
 
 @Composable
 fun ListContent(
-    restaurants: List<RestaurantUIModel>,
+    restaurants: LazyPagingItems<RestaurantUIModel>,
     navHostController: NavHostController
 ) {
+
+    restaurants.apply {
+        val error = when {
+            loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+            else -> null
+        }
+
+        when {
+            error != null -> {
+                EmptyScreen {
+                    restaurants.refresh()
+                }
+            }
+            restaurants.itemCount < 1 -> {
+                EmptyScreen()
+            }
+        }
+    }
+
     LazyColumn {
-        items(restaurants) {
-            ListItem(restaurantUIModel = it, navHostController = navHostController)
+        items(
+            items = restaurants
+        ) { restaurant ->
+            restaurant?.let {
+                ListItem(restaurantUIModel = restaurant, navHostController = navHostController)
+            }
         }
     }
 }

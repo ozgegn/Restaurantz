@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/java/com/ozge/restaurantz/ui/components/EmptyScreen.kt" value="0.34797297297297297" />
         <entry key="app/src/main/java/com/ozge/restaurantz/ui/screens/detail/DetailsContent.kt" value="0.25" />
         <entry key="app/src/main/java/com/ozge/restaurantz/ui/screens/home/HomeTopBar.kt" value="0.38796296296296295" />
         <entry key="app/src/main/java/com/ozge/restaurantz/ui/screens/home/ListContent.kt" value="0.33" />
