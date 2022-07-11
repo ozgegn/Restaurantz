@@ -14,12 +14,9 @@ interface RestaurantDao {
     fun getAllRestaurants(): PagingSource<Int, RestaurantEntity>
 
     @Query("SELECT * FROM restaurants WHERE id=:id")
-    fun getRestaurant(id: Int): RestaurantEntity
+    fun getRestaurant(id: Int): RestaurantEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addRestaurants(restaurants: List<RestaurantEntity>)
-
-    @Query("DELETE FROM restaurants")
-    suspend fun deleteAll()
 
 }

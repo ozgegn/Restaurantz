@@ -3,9 +3,14 @@ package com.ozge.restaurantz.ui.screens.detail
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ozge.restaurantz.domain.model.RestaurantUIModel
+import com.ozge.restaurantz.domain.repository.RestaurantRepository
+import com.ozge.restaurantz.utils.NavConstants.KEY_RESTAURANT_ID
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,7 +18,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-class DetailViewModel: ViewModel() {
+@HiltViewModel
+class DetailViewModel @Inject constructor(
+    private val restaurantRepository: RestaurantRepository,
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     private val _uiEvent = MutableSharedFlow<UiEvent>()
     val uiEvent: SharedFlow<UiEvent> = _uiEvent.asSharedFlow()
@@ -26,7 +35,11 @@ class DetailViewModel: ViewModel() {
         get() = _restaurantDetail
 
     init {
-
+        viewModelScope.launch {
+            savedStateHandle.get<Int>(KEY_RESTAURANT_ID)?.let {
+                _restaurantDetail.value = restaurantRepository.getRestaurant(it)
+            }
+        }
     }
 
     fun generateColorPalette() {

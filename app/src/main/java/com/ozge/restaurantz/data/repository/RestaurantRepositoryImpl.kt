@@ -32,4 +32,17 @@ class RestaurantRepositoryImpl @Inject constructor(
             return@withContext emptyList()
         }
     }
+
+    override suspend fun getRestaurant(id: Int): RestaurantUIModel? = withContext(ioDispatcher) {
+        return@withContext try {
+            val selectedRestaurant = restaurantDao.getRestaurant(id)
+            if (selectedRestaurant != null) {
+                mapper.mapToUIModel(selectedRestaurant)
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
 }

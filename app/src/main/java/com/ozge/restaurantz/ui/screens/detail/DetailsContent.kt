@@ -1,5 +1,6 @@
 package com.ozge.restaurantz.ui.screens.detail
 
+import android.graphics.Color.parseColor
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,7 +48,6 @@ import com.ozge.restaurantz.ui.theme.titleTextColor
 import com.ozge.restaurantz.utils.CLOSE_ICON_SIZE
 import com.ozge.restaurantz.utils.EXPANDED_RADIUS_LEVEL
 import com.ozge.restaurantz.utils.EXTRA_LARGE_PADDING
-import com.ozge.restaurantz.utils.LARGE_PADDING
 import com.ozge.restaurantz.utils.MEDIUM_PADDING
 import com.ozge.restaurantz.utils.MINIMUM_BACKGROUND_IMAGE
 import com.ozge.restaurantz.utils.MIN_SHEET_HEIGHT
@@ -73,7 +73,7 @@ fun DetailsContent(
 
     rememberSystemUiController().apply {
         setStatusBarColor(
-            color = Color(android.graphics.Color.parseColor(darkVibrant))
+            color = Color(parseColor(darkVibrant))
         )
     }
 
@@ -99,13 +99,21 @@ fun DetailsContent(
         scaffoldState = scaffoldState,
         sheetPeekHeight = MIN_SHEET_HEIGHT,
         sheetContent = {
-
+            restaurantUIModel?.let {
+                BottomSheetContent(
+                    restaurantUIModel = it,
+                    sheetBackgroundColor = Color(
+                        parseColor(darkVibrant)
+                    ),
+                    contentColor = Color(parseColor(onDarkVibrant))
+                )
+            }
         },
         content = {
             BackgroundContent(
                 image = restaurantUIModel?.logo.orEmpty(),
                 imageFraction = currentSheetFraction,
-                backgroundColor = Color(android.graphics.Color.parseColor(darkVibrant))
+                backgroundColor = Color(parseColor(darkVibrant))
             ) {
                 navHostController.popBackStack()
             }
@@ -166,10 +174,12 @@ fun BottomSheetContent(
     Column(
         modifier = Modifier
             .background(sheetBackgroundColor)
-            .padding(LARGE_PADDING)
+            .padding(MEDIUM_PADDING)
     ) {
         Text(
-            modifier = Modifier.weight(8f),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(MEDIUM_PADDING),
             text = restaurantUIModel.name,
             color = contentColor,
             fontSize = MaterialTheme.typography.h4.fontSize,

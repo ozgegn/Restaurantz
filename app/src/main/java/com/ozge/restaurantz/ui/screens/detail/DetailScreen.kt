@@ -38,14 +38,16 @@ fun DetailScreen(
         detailViewModel.uiEvent.collectLatest { event ->
             when (event) {
                 is UiEvent.GenerateColorPalette -> {
-                    val bitmap = convertImageUrlIntoBitmap(
-                        url = "",
-                        context = context
-                    )
-                    if (bitmap != null) {
-                        detailViewModel.setColorPalette(
-                            colors = extractColorsFromBitmap(bitmap)
+                    restaurantDetail?.logo?.let {
+                        val bitmap = convertImageUrlIntoBitmap(
+                            url = it,
+                            context = context
                         )
+                        if (bitmap != null) {
+                            detailViewModel.setColorPalette(
+                                colors = extractColorsFromBitmap(bitmap)
+                            )
+                        }
                     }
                 }
             }

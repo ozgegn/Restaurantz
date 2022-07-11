@@ -6,4 +6,6 @@ interface RestaurantRepository {
 
     suspend fun getRestaurants(size: Int, page: Int): List<RestaurantUIModel>?
 
+    suspend fun getRestaurant(id: Int): RestaurantUIModel?
+
 }
