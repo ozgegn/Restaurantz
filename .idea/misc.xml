@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/java/com/ozge/restaurantz/ui/screens/home/HomeTopBar.kt" value="0.38796296296296295" />
+        <entry key="app/src/main/java/com/ozge/restaurantz/ui/screens/home/ListContent.kt" value="0.33" />
+        <entry key="app/src/main/res/drawable-v24/placeholder.xml" value="0.2095" />
       </map>
     </option>
   </component>

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import com.ozge.restaurantz.data.mapper.BaseMapper
 import kotlinx.serialization.json.JsonObject
 
+@kotlinx.serialization.Serializable
 data class RestaurantEntity(
     val id: Int?,
     val uid: String?,
@@ -12,7 +13,6 @@ data class RestaurantEntity(
     val description: String?,
     val review: String?,
     val logo: String?,
-    @SerializedName("phone_number") val phoneNumber: String?,
-    val address: String?,
-    val hours: JsonObject
+    val phone_number: String?,
+    val address: String?
 ): ResponseModel

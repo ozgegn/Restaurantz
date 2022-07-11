@@ -14,7 +14,7 @@ class RestaurantUIMapper : BaseMapper<RestaurantEntity, RestaurantUIModel> {
             description = responseModel?.description.orEmpty(),
             review = responseModel?.review.orEmpty(),
             logo = responseModel?.logo.orEmpty(),
-            phoneNumber = responseModel?.phoneNumber.orEmpty(),
+            phoneNumber = responseModel?.phone_number.orEmpty(),
             address = responseModel?.address.orEmpty(),
             hours = emptyList()
         )

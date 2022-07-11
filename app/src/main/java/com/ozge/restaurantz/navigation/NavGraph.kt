@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.ozge.restaurantz.ui.screens.home.HomeScreen
 import com.ozge.restaurantz.utils.NavConstants
 
 
@@ -16,7 +17,7 @@ fun SetupNavGraph(navHostController: NavHostController) {
         startDestination = Screen.Home.route
     ) {
         composable(route = Screen.Home.route) {
-
+            HomeScreen(navHostController = navHostController)
         }
         composable(
             route = Screen.Detail.route,

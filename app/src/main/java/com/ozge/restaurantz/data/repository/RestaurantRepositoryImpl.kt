@@ -2,7 +2,7 @@ package com.ozge.restaurantz.data.repository
 
 import com.ozge.restaurantz.data.mapper.RestaurantUIMapper
 import com.ozge.restaurantz.data.remote.RestaurantApi
-import com.ozge.restaurantz.domain.model.Error
+import com.ozge.restaurantz.domain.model.BaseError
 import com.ozge.restaurantz.domain.model.Resource
 import com.ozge.restaurantz.domain.model.RestaurantUIModel
 import com.ozge.restaurantz.domain.repository.RestaurantRepository
@@ -23,10 +23,10 @@ class RestaurantRepositoryImpl @Inject constructor(
             return@withContext if (result.isSuccessful) {
                 val uiModelList = result.body()?.map {
                     mapper.mapToUIModel(it)
-                }
+                } ?: emptyList()
                 Resource.Success(uiModelList)
             } else {
-                Resource.Failure(Error())
+                Resource.Failure(BaseError())
             }
         }
 }
