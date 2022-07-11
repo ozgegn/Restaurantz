@@ -14,3 +14,7 @@ object ApiConstants {
 object NavConstants {
     const val KEY_RESTAURANT_ID = "restaurantId"
 }
+
+object DatabaseConstants {
+    const val DATABASE_NAME = "restaurants_db"
+}

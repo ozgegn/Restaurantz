@@ -1,12 +1,12 @@
 package com.ozge.restaurantz.data.entity
 
-import com.google.gson.annotations.SerializedName
-import com.ozge.restaurantz.data.mapper.BaseMapper
-import kotlinx.serialization.json.JsonObject
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @kotlinx.serialization.Serializable
+@Entity(tableName = "restaurants")
 data class RestaurantEntity(
-    val id: Int?,
+    @PrimaryKey val id: Int?,
     val uid: String?,
     val name: String?,
     val type: String?,
