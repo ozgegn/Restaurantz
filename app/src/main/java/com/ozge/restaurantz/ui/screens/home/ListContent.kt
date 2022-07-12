@@ -25,6 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -70,7 +72,11 @@ fun ListContent(
                 EmptyScreen()
             }
             else -> {
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.semantics {
+                        contentDescription = "HomeWidget"
+                    }
+                ) {
                     items(
                         items = restaurants
                     ) { restaurant ->
@@ -102,14 +108,19 @@ fun ListItem(
         modifier = Modifier
             .height(RESTAURANT_ITEM_HEIGHT)
             .fillMaxWidth()
-            .clickable { navHostController.navigate(Screen.Detail.passId(restaurantUIModel.id)) },
+            .clickable { navHostController.navigate(Screen.Detail.passId(restaurantUIModel.id)) }
+            .semantics { contentDescription = "RestaurantListItem" },
         contentAlignment = Alignment.BottomStart
     ) {
         Surface(shape = RoundedCornerShape(size = LARGE_PADDING)) {
             Image(
                 painter = painter,
                 contentDescription = "Restaurant Image",
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .semantics {
+                        contentDescription = "RestaurantBackgroundImage"
+                    },
                 contentScale = ContentScale.Crop
             )
         }
@@ -126,6 +137,9 @@ fun ListItem(
                     .padding(MEDIUM_PADDING)
             ) {
                 Text(
+                    modifier = Modifier.semantics {
+                        contentDescription = "RestaurantTitleItem"
+                    },
                     text = restaurantUIModel.name,
                     color = MaterialTheme.colors.titleTextColor,
                     fontSize = MaterialTheme.typography.h5.fontSize,

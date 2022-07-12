@@ -10,7 +10,7 @@ data class RestaurantUIModel(
     val logo: String,
     val phoneNumber: String,
     val address: String,
-    val hours: List<WorkingHours>
+    val hours: List<WorkingHours> = emptyList()
 ): UIModel
 
 data class WorkingHours(

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 5818,
+    "uid": "5d4276bc-bab8-43b9-b50a-ad1eb1e1e8fd",
+    "name": "Golden Pub",
+    "type": "Senegalese",
+    "description": "Culver’s Restaurant was founded by the Culver family in 1984, which eventually branched out to more than 300 franchised restaurants all over the US. Culver’s is well-known for its ButterBurger, which made the restaurant extremely famous. They also have other items which include salads, sandwiches, desserts, etc.",
+    "review": "Brand new. Great design. Odd to hear pop music in a Mexican establishment. Music is a bit loud. It should be background.",
+    "logo": "https://loremflickr.com/500/500/restaurant",
+    "phone_number": "(523) 116-1089 x43950",
+    "address": "Suite 107 6496 Runte Stream, Port Christianfurt, NE 38014",
+    "hours": {
+      "monday": {
+        "opens_at": "9:34 AM",
+        "closes_at": "9:15 PM",
+        "is_closed": false
+      },
+      "tuesday": {
+        "opens_at": "10:39 AM",
+        "closes_at": "9:18 PM",
+        "is_closed": false
+      },
+      "wednesday": {
+        "opens_at": "7:46 AM",
+        "closes_at": "7:17 PM",
+        "is_closed": false
+      },
+      "thursday": {
+        "opens_at": "7:26 AM",
+        "closes_at": "5:28 PM",
+        "is_closed": false
+      },
+      "friday": {
+        "opens_at": "7:26 AM",
+        "closes_at": "4:49 PM",
+        "is_closed": false
+      },
+      "saturday": {
+        "opens_at": "6:15 AM",
+        "closes_at": "2:18 PM",
+        "is_closed": false
+      },
+      "sunday": {
+        "opens_at": "6:33 AM",
+        "closes_at": "4:10 PM",
+        "is_closed": true
+      }
+    }
+  },
+  {
+    "id": 2155,
+    "uid": "9dabc2cc-483e-4e4d-895b-6ff2e7f8f142",
+    "name": "Salty Eats",
+    "type": "Bakery",
+    "description": "To deliver an exceptional shopping experience by offering the best service, value, quality, and freshest products while being good stewards of our environment and giving back to the communities we serve.",
+    "review": "For dinner we ordered the shrimp enchiladas, chicken enchiladas, chicken burrito, chimichangas, and steak quesadillas. Everything was so tasty and amazing. I wasnt surprised because the food at the FiDi location is the best so I figured this location would be just as good and it was!!! The enchiladas with the green sauce is to die for. My go to at the FiDi location is usually the chicken enchiladas but I decided to try something new and the shrimp enchiladas did not disappoint.",
+    "logo": "https://loremflickr.com/500/500/restaurant",
+    "phone_number": "977.096.5146 x2252",
+    "address": "Apt. 112 52324 Karina Divide, Lake Ellsworth, UT 68962-7915",
+    "hours": {
+      "monday": {
+        "opens_at": "7:33 AM",
+        "closes_at": "1:58 PM",
+        "is_closed": false
+      },
+      "tuesday": {
+        "opens_at": "7:58 AM",
+        "closes_at": "1:10 PM",
+        "is_closed": true
+      },
+      "wednesday": {
+        "opens_at": "7:53 AM",
+        "closes_at": "5:36 PM",
+        "is_closed": true
+      },
+      "thursday": {
+        "opens_at": "8:43 AM",
+        "closes_at": "9:17 PM",
+        "is_closed": false
+      },
+      "friday": {
+        "opens_at": "11:29 AM",
+        "closes_at": "6:46 PM",
+        "is_closed": false
+      },
+      "saturday": {
+        "opens_at": "10:39 AM",
+        "closes_at": "8:40 PM",
+        "is_closed": true
+      },
+      "sunday": {
+        "opens_at": "10:20 AM",
+        "closes_at": "11:15 PM",
+        "is_closed": false
+      }
+    }
+  }
+]

@@ -21,15 +21,19 @@ class RestaurantRepositoryImpl @Inject constructor(
         size: Int,
         page: Int
     ): List<RestaurantUIModel>? = withContext(ioDispatcher) {
-        val apiResult = api.getRestaurants(page = page, size = size)
-        if (apiResult.isSuccessful && (apiResult.body()?.isEmpty() == false)) {
-            restaurantDao.addRestaurants(apiResult.body()!!)
-            val mappedData = apiResult.body()?.map {
-                mapper.mapToUIModel(it)
+        return@withContext try {
+            val apiResult = api.getRestaurants(page = page, size = size)
+            if (apiResult.isSuccessful && (apiResult.body()?.isEmpty() == false)) {
+                restaurantDao.addRestaurants(apiResult.body()!!)
+                val mappedData = apiResult.body()?.map {
+                    mapper.mapToUIModel(it)
+                }
+                mappedData
+            } else {
+                emptyList()
             }
-            return@withContext mappedData
-        } else {
-            return@withContext emptyList()
+        } catch (e: Exception) {
+            emptyList()
         }
     }
 
